@@ -1,0 +1,15 @@
+header {
+  color: white;
+  background-color: #292b2c;
+  height: 4rem;
+  text-align: center;
+  justify-content: center;
+}
+canvas {
+  border: 1px solid #d3d3d3;
+  border-radius: 5px;
+}
+p {
+  font-size: 24px;
+  font-weight: bold;
+}

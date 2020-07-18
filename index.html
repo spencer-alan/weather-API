@@ -1,0 +1,55 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>Weather Search</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    
+  </head>
+  <body>
+    <header class="container-fluid">
+      <h1>
+        Weather Finder
+      </h1>
+    </header>
+    <div class="container-fluid">
+      <div class="row">
+        <div id="sidebar" class="col-lg-3">
+          <form class="form-inline">
+            <p>Search for a City:</p>
+            <input type="text" id="search" class="form-control" aria-label="Search">
+            <button id="search-btn" class="btn btn-primary"><span data-feather="search"></span></button>
+          </form>
+          <ul id="search-history" class="nav flex-column">
+            
+          </ul>
+        </div>
+
+      
+        <main role="main" class="col-lg-9">
+          <div class="d-flex align-items-center pt-3 border-bottom">
+            <h2>Dashboard</h2>
+          </div>
+          <canvas class="my-4 w-100" id="weather-panel" width="900" height="300">
+
+          </canvas>
+          <div class="d-flex align-items-center pb-2 border-bottom">
+            <h2>5-Day Forecast:</h2>
+          </div>
+          <canvas class="my-4 w-100" id="forecast-panel" width="900" height="200">
+
+          </canvas> 
+        </main>
+      </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="assets/script.js"></script>
+  </body>
+</html>
