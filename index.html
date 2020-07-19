@@ -22,9 +22,9 @@
       <div class="row">
         <div id="sidebar" class="col-lg-3">
           <form class="form-inline">
-            <p>Search for a City:</p>
+            <p id="heading">Search for a City:</p>
             <input type="text" id="search" class="form-control" aria-label="Search">
-            <button id="search-btn" class="btn btn-primary"><span data-feather="search"></span></button>
+            <button id="search-btn" class="btn btn-primary" type="button"><span data-feather="search"></span></button>
           </form>
           <ul id="search-history" class="nav flex-column">
             
@@ -36,20 +36,31 @@
           <div class="d-flex align-items-center pt-3 border-bottom">
             <h2>Dashboard</h2>
           </div>
-          <canvas class="my-4 w-100" id="weather-panel" width="900" height="300">
-
-          </canvas>
+          <div class="container canvas">
+            <div class="container-fluid clearfix">
+              <div id="city-name"></div>
+              <div id="date"></div>
+              <div id="weather-icon"><img id="icon-image"></div>
+            </div>
+            <div id="temp"></div>
+            <br>
+            <div id="humidity"></div>
+            <br>
+            <div id="wind"></div>
+            <br>
+            <div id="uv-index"></div>
+          </div>
           <div class="d-flex align-items-center pb-2 border-bottom">
             <h2>5-Day Forecast:</h2>
           </div>
-          <canvas class="my-4 w-100" id="forecast-panel" width="900" height="200">
+          <div class="container canvas">
 
-          </canvas> 
+          </div>
         </main>
       </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <script src="assets/script.js"></script>
+      <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+      <script src="assets/script.js"></script>
   </body>
 </html>

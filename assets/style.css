@@ -1,3 +1,8 @@
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
 header {
   color: white;
   background-color: #292b2c;
@@ -5,11 +10,23 @@ header {
   text-align: center;
   justify-content: center;
 }
-canvas {
+.canvas {
   border: 1px solid #d3d3d3;
   border-radius: 5px;
 }
-p {
+#heading {
   font-size: 24px;
   font-weight: bold;
+}
+#city-name {
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: capitalize;
+  float: left;
+}
+#date {
+  float: left;
+}
+#weather-icon {
+  float: left;
 }
