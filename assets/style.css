@@ -3,6 +3,7 @@
   clear: both;
   display: table;
 }
+
 header {
   color: white;
   background-color: #292b2c;
@@ -10,23 +11,45 @@ header {
   text-align: center;
   justify-content: center;
 }
-.canvas {
+
+button {
+  text-transform: capitalize;
+}
+
+.card{
+  width: 10rem;
+  padding: 2px;
+  margin: 5px;
+  background-color: #0275d8;
+  float:left;
+}
+
+#canvas {
   border: 1px solid #d3d3d3;
   border-radius: 5px;
 }
+
 #heading {
   font-size: 24px;
   font-weight: bold;
 }
+
 #city-name {
   font-size: 24px;
   font-weight: bold;
   text-transform: capitalize;
+  padding: 10px 10px 10px 0px;
   float: left;
 }
+
 #date {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 10px;
   float: left;
 }
+
 #weather-icon {
+  padding: 5px;
   float: left;
 }

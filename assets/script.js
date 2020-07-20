@@ -4,11 +4,16 @@ $(document).ready(function() {
 
   // Start of Code
   
-  $("#search-btn").on("click", function() {
-    
+  // need one more on enter event listener
+  
+  $("#search-btn").on("click", getWeather); 
+  // one more event listener to handle recent search button click
+  //need to populate the city name text when recent search is clicked
+  
+  function getWeather() {
     let search = $("#search").val().trim();
     $("#city-name").text(search);
-    let geoCode = `https://maps.googleapis.com/maps/api/geocode/json?address=${search}&key=AIzaSyCkEObfpLOQDH06__WzcOMHkDfvjYi5QIE`;
+    let geoCode = `https://us1.locationiq.com/v1/search.php?key=71ff5f7e923bc0&q=${search}&format=json`;
 
     $.ajax({
       url: geoCode,
@@ -16,9 +21,9 @@ $(document).ready(function() {
     }).then(function(response) {
       //console.log(response);
 
-      let lat = response.results[0].geometry.location.lat;
-      let lon = response.results[0].geometry.location.lng;
-      let queryUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly&units=imperial&appid=f0b0a3f8ddd94f0167372124c4d1652d`;
+      let lat = response[0].lat;
+      let lon = response[0].lon;
+      let queryUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly&units=imperial&appid=2c77de34da40a4af3610f7e69981374f`;
       
       $.ajax({
         url: queryUrl,
@@ -26,21 +31,41 @@ $(document).ready(function() {
       }).then(function(response) {
         console.log(response);
 
+        let m = moment();
+        let icon = response.current.weather[0].icon;
+        let iconUrl = "http://openweathermap.org/img/wn/" + icon + ".png";
+        let iconAlt = response.current.weather[0].description;
         let temp = "Tempurature: " + response.current.temp + " F";
         let humid = "Humidity: " + response.current.humidity + "%";
         let wind = "Wind Speed: " + response.current.wind_speed + " MPH";
         let uvIndex = "UV Index: " + response.current.uvi;
-        let icon = response.current.weather[0].icon;
-        let iconUrl = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
-        let iconAlt = response.current.weather[0].description;
-
+        
+        $("#date").html(m.format("l"));
         $("#temp").html(temp);
         $("#humidity").html(humid);
         $("#wind").html(wind);
         $("#uv-index").html(uvIndex);
         $("#icon-image").attr("src", iconUrl);
         $("#icon-image").attr("alt", iconAlt);
+
+        for (let i = 0; i < 5; i++) {
+          let j = 1;
+          let newDate = m.add(j, "days");
+          j++;
+          
+          let cardArray = $(".card-body").toArray();
+
+          let newH1 = cardArray[i].append("<h1></h1>");
+          newH1.html(newDate);
+          // let forecast = respone.daily[i];
+          // let forecastIconUrl = forecast.weather[0].icon;
+          // let forecastIconAlt = forecast.weather[0].description;
+          // let forecastTemp = forecast.temp.max;
+          // let forecastHumid = forecast.humidity;
+          
+        }
       })
     })  
-  })
+  }
+// document ready brackets
 })
