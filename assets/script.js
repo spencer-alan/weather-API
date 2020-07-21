@@ -13,7 +13,7 @@ $(document).ready(function() {
   function getWeather() {
     let search = $("#search").val().trim();
     $("#city-name").text(search);
-    let geoCode = `https://us1.locationiq.com/v1/search.php?key=71ff5f7e923bc0&q=${search}&format=json`;
+    let geoCode = `https://us1.locationiq.com/v1/search.php?key=PASSWORD&q=${search}&format=json`;
 
     $.ajax({
       url: geoCode,
