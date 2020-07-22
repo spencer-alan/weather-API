@@ -3,18 +3,37 @@ $(document).ready(function() {
   feather.replace();
 
   // Start of Code
-  
+  let cityArray = [];
+  let search = $("#search").val().trim();
+  //init();
   // need one more on enter event listener
-  
-  $("#search-btn").on("click", getWeather); 
-  // one more event listener to handle recent search button click
+  $("#search-btn").on("click", renderBtn);
+  //$("#search-btn").on("click", getWeather); 
+  //one more event listener to handle recent search button click
   //need to populate the city name text when recent search is clicked
   
+  // function init(){
+  //   let storedCity = JSON.parse(localStorage.getItem("city"));
+  //   if (storedCity !== null) {
+  //     search = storedCity;
+  //   }
+  //   getWeather();
+  // }
+
+  function renderBtn() {
+    let search = $("#search").val().trim();
+    let newBtn = $("<button>");
+    newBtn.text(search);
+    newBtn.addClass("btn btn-light btn-block recent-search");
+    $("#button-group").append(newBtn);
+    getWeather();
+    }
+
   function getWeather() {
     let search = $("#search").val().trim();
     $("#city-name").text(search);
     let geoCode = `https://us1.locationiq.com/v1/search.php?key=71ff5f7e923bc0&q=${search}&format=json`;
-
+    console.log(geoCode);
     $.ajax({
       url: geoCode,
       method: "GET"
@@ -23,7 +42,7 @@ $(document).ready(function() {
 
       let lat = response[0].lat;
       let lon = response[0].lon;
-      let queryUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly&units=imperial&appid=2c77de34da40a4af3610f7e69981374f`;
+      let queryUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly&units=imperial&appid=a11089d7141e59753a523e414ed6445b`;
       
       $.ajax({
         url: queryUrl,
@@ -46,13 +65,30 @@ $(document).ready(function() {
         let temp = "Tempurature: " + response.current.temp + " F";
         let humid = "Humidity: " + response.current.humidity + "%";
         let wind = "Wind Speed: " + response.current.wind_speed + " MPH";
-        let uvIndex = "UV Index: " + response.current.uvi;
+        let uvIndex = "UV Index: ";
+        let uvIndexSpan = $("<span>");
+        let uvIndexNumber = parseInt(response.current.uvi);
+        if (uvIndexNumber <= 2){
+        uvIndexSpan.attr("id", "uv-number-green");
+        } else if (uvIndexNumber >= 3 && uvIndexNumber <=5){
+          uvIndexSpan.attr("id", "uv-number-yellow");
+        } else if (uvIndexNumber >= 6 && uvIndexNumber <=7){
+          uvIndexSpan.attr("id", "uv-number-orange");
+        } else if (uvIndexNumber >= 8 && uvIndexNumber <=10){
+          uvIndexSpan.attr("id", "uv-number-red");
+        } else if (uvIndexNumber >= 11){
+          uvIndexSpan.attr("id", "uv-number-purple");
+        }
+        uvIndexSpan.html(response.current.uvi)
+        
         
         $("#date").html(humanDate);
         $("#temp").html(temp);
         $("#humidity").html(humid);
         $("#wind").html(wind);
         $("#uv-index").html(uvIndex);
+        $("#uv-index").append(uvIndexSpan);
+
         $("#icon-image").attr("src", iconUrl);
         $("#icon-image").attr("alt", iconAlt);
      

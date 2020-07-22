@@ -12,7 +12,8 @@ header {
   justify-content: center;
 }
 
-button {
+.recent-search {
+  border: 1px solid #e6e6e6;
   text-transform: capitalize;
 }
 
@@ -24,6 +25,10 @@ button {
   float:left;
 }
 
+#sidebar {
+  background-color: #f9f9eb
+  ;
+}
 #canvas {
   border: 1px solid #d3d3d3;
   border-radius: 5px;
@@ -52,4 +57,38 @@ button {
 #weather-icon {
   padding: 5px;
   float: left;
+}
+
+#uv-number-green {
+  padding: 5px;
+  background-color: green;
+  color: white;
+  border-radius: 5px;
+}
+
+#uv-number-yellow {
+  padding: 5px;
+  background-color: yellow;
+  border-radius: 5px;
+}
+
+#uv-number-orange {
+  padding: 5px;
+  background-color: orange;
+  color: white;
+  border-radius: 5px;
+}
+
+#uv-number-red {
+  padding: 5px;
+  background-color: red;
+  color: white;
+  border-radius: 5px;
+}
+
+#uv-number-purple {
+  padding: 5px;
+  background-color: fuchsia;
+  color: white;
+  border-radius: 5px;
 }
