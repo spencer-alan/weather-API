@@ -3,36 +3,43 @@ $(document).ready(function() {
   feather.replace();
 
   // Start of Code
-  let cityArray = [];
-  let search = $("#search").val().trim();
-  //init();
-  // need one more on enter event listener
-  $("#search-btn").on("click", renderBtn);
-  //$("#search-btn").on("click", getWeather); 
-  //one more event listener to handle recent search button click
-  //need to populate the city name text when recent search is clicked
-  
-  // function init(){
-  //   let storedCity = JSON.parse(localStorage.getItem("city"));
-  //   if (storedCity !== null) {
-  //     search = storedCity;
-  //   }
-  //   getWeather();
-  // }
+  // let cityArray = [];
+  // let search = $("#search").val().trim();
+  init();
 
+  
+
+  //one more event listener to handle recent search button click
+
+  
+  function init(){
+    let storedCity = localStorage.getItem("Last city");
+    if (storedCity !== null) {
+      $("#search").val(storedCity);
+      getWeather();
+    } return
+  }
+
+  function storeCity(){
+    let recentSearch = $("#search").val().trim();
+    localStorage.setItem("Last city", recentSearch);
+    renderBtn();
+  }
   function renderBtn() {
     let search = $("#search").val().trim();
     let newBtn = $("<button>");
     newBtn.text(search);
-    newBtn.addClass("btn btn-light btn-block recent-search");
-    $("#button-group").append(newBtn);
+    newBtn.val(search);
+    newBtn.attr("type", "button");
+    newBtn.addClass("btn btn-light w-100 recent");
+    $("#button-group").prepend(newBtn);
     getWeather();
     }
 
   function getWeather() {
-    let search = $("#search").val().trim();
-    $("#city-name").text(search);
-    let geoCode = `https://us1.locationiq.com/v1/search.php?key=71ff5f7e923bc0&q=${search}&format=json`;
+    let city = $("#search").val().trim();
+    $("#city-name").text(city);
+    let geoCode = `https://us1.locationiq.com/v1/search.php?key=71ff5f7e923bc0&q=${city}&format=json`;
     console.log(geoCode);
     $.ajax({
       url: geoCode,
@@ -136,5 +143,14 @@ $(document).ready(function() {
       })
     })  
   }
+  //Button press events
+  $("#search-btn").on("click", storeCity);
+
+  $(document).on('click', '#button-group .recent', function(){ 
+    console.log("entered click!");
+    let newCitySearch = $(this).val();
+    $("#search").val(newCitySearch);
+    getWeather();
+});
 // document ready brackets
 })

@@ -12,7 +12,7 @@ header {
   justify-content: center;
 }
 
-.recent-search {
+.recent {
   border: 1px solid #e6e6e6;
   text-transform: capitalize;
 }
