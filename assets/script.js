@@ -3,15 +3,8 @@ $(document).ready(function() {
   feather.replace();
 
   // Start of Code
-  // let cityArray = [];
-  // let search = $("#search").val().trim();
   init();
 
-  
-
-  //one more event listener to handle recent search button click
-
-  
   function init(){
     let storedCity = localStorage.getItem("Last city");
     if (storedCity !== null) {
