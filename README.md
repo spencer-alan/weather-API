@@ -10,4 +10,4 @@ Here is the deployed app link:
 ## Screenshot
 
 Home page:
-![home page]("Home Page")
+![home page](https://github.com/spencer-alan/weather-API/blob/master/assets/screenshots/weather-api-home-page.png "Home Page")
