@@ -32,7 +32,7 @@ $(document).ready(function() {
   function getWeather() {
     let city = $("#search").val().trim();
     $("#city-name").text(city);
-    let geoCode = `https://us1.locationiq.com/v1/search.php?key=71ff5f7e923bc0&q=${city}&format=json`;
+    let geoCode = `https://us1.locationiq.com/v1/search.php?key=pk.209188b141f04d35823ba963258b9c65&q=${city}&format=json`;
     console.log(geoCode);
     $.ajax({
       url: geoCode,
